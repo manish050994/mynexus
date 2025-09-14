@@ -7,6 +7,8 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
+import { motion } from "framer-motion";
+
 import {
   ArrowRight,
   Play,
@@ -64,7 +66,7 @@ export default function MyNexusLandingPage() {
     {
       icon: Users,
       title: "For Parents",
-      color: "bg-blue-100 text-blue-600",
+      color: "bg-blue-100 text-nexusblue",
       features: [
         "Real-time attendance tracking",
         "Fee payment notifications",
@@ -204,7 +206,11 @@ export default function MyNexusLandingPage() {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-blue-600">MyNexus</h1>
+                <img 
+                src={require("../../assets/images/nexus_logo.png")} 
+                alt="MyNexus Logo" 
+                className="h-16 w-auto"
+                />
               </div>
             </div>
 
@@ -213,25 +219,25 @@ export default function MyNexusLandingPage() {
               <div className="ml-10 flex items-baseline space-x-8">
                 <a
                   href="#features"
-                  className="text-gray-700 transition-colors hover:text-blue-600"
+                  className="text-gray-700 transition-colors hover:text-nexusblue"
                 >
                   Features
                 </a>
                 <a
                   href="#modules"
-                  className="text-gray-700 transition-colors hover:text-blue-600"
+                  className="text-gray-700 transition-colors hover:text-nexusblue"
                 >
                   Modules
                 </a>
                 <a
                   href="#testimonials"
-                  className="text-gray-700 transition-colors hover:text-blue-600"
+                  className="text-gray-700 transition-colors hover:text-nexusblue"
                 >
                   Testimonials
                 </a>
                 <a
                   href="#contact"
-                  className="text-gray-700 transition-colors hover:text-blue-600"
+                  className="text-gray-700 transition-colors hover:text-nexusblue"
                 >
                   Contact
                 </a>
@@ -240,16 +246,19 @@ export default function MyNexusLandingPage() {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Button className="bg-blue-600 text-white hover:bg-blue-700">
-                Request Demo
-              </Button>
+                <Button 
+                    variant="contained" 
+                    color="primary"
+                >
+                    Request Demo
+                </Button>
             </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-600"
+                className="text-gray-700 hover:text-nexusblue"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -262,30 +271,30 @@ export default function MyNexusLandingPage() {
               <div className="space-y-1 border-t border-gray-200 px-2 pb-3 pt-2">
                 <a
                   href="#features"
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                  className="block px-3 py-2 text-gray-700 hover:text-nexusblue"
                 >
                   Features
                 </a>
                 <a
                   href="#modules"
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                  className="block px-3 py-2 text-gray-700 hover:text-nexusblue"
                 >
                   Modules
                 </a>
                 <a
                   href="#testimonials"
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                  className="block px-3 py-2 text-gray-700 hover:text-nexusblue"
                 >
                   Testimonials
                 </a>
                 <a
                   href="#contact"
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                  className="block px-3 py-2 text-gray-700 hover:text-nexusblue"
                 >
                   Contact
                 </a>
                 <div className="px-3 py-2">
-                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                  <Button className="w-full bg-nexusblue text-white hover:bg-nexusblue">
                     Request Demo
                   </Button>
                 </div>
@@ -296,7 +305,7 @@ export default function MyNexusLandingPage() {
       </header>
 
       {/* Hero Section with App Launch Announcement */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-600 py-20 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-nexusblue to-purple-600 py-20 text-white">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/10 to-transparent"></div>
@@ -312,32 +321,47 @@ export default function MyNexusLandingPage() {
               </span>
               <span className="font-semibold">Coming Soon: MyNexus Mobile App</span>
             </div>
-
+            <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            >
             <h1 className="mb-6 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
               Revolutionizing Education Management with{" "}
               <span className="text-yellow-300">MyNexus</span>
             </h1>
-
+            </motion.div>
             <p className="mx-auto mb-8 max-w-2xl text-xl leading-relaxed text-blue-100">
               The all-in-one ERP solution for schools and colleges. Streamline operations, enhance communication, and transform educational experiences.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
-                size="lg"
-                className="bg-white px-8 py-3 text-blue-600 hover:bg-gray-100"
-              >
-                Join Waitlist
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white bg-transparent px-8 py-3 text-white hover:bg-white hover:text-blue-600"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
+                variant="outlined"
+                sx={{
+                    color: "#f5f5f5",
+                    border: "2px solid #f5f5f5",
+                    borderRadius: "12px",
+                    fontWeight: 600,
+                    textTransform: "none",
+                    transition: "all 0.3s ease-in-out",
+                    animation: "wiggle 0.5s infinite  ease-in-out",
+                    "&:hover": {
+                    border: "2px solid #f2f2f2ff",
+                    // apply wiggle animation
+                    },
+                    "@keyframes wiggle": {
+                    "0%": { transform: "rotate(0deg)" },
+                    "25%": { transform: "rotate(3deg)" },
+                    "50%": { transform: "rotate(-3deg)" },
+                    "75%": { transform: "rotate(3deg)" },
+                    "100%": { transform: "rotate(0deg)" },
+                    },
+                }}
+                >
+                Get Started
+                </Button>
+
             </div>
           </div>
 
@@ -354,6 +378,7 @@ export default function MyNexusLandingPage() {
           </div>
         </div>
       </section>
+            
 
       {/* Modules Section */}
       <section id="modules" className="py-16 bg-gray-50">
@@ -369,20 +394,22 @@ export default function MyNexusLandingPage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             {modules.map((module, index) => (
-              <div 
-                key={index}
-                className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: index * 0.3 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    >
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <CardHeader className="text-center">
+                  <div className="text-center p-6">
                     <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${module.color}`}>
                       <module.icon className="h-8 w-8" />
                     </div>
-                    <Typography variant="h6" component="h3" className="text-2xl font-bold text-gray-900">
+                    <Typography variant="h6" component="h3" className="text-3xl font-bold text-gray-900">
                       {module.title}
                     </Typography>
-                  </CardHeader>
+                  </div>
                   <CardContent>
                     <ul className="space-y-3">
                       {module.features.map((feature, featureIndex) => (
@@ -394,11 +421,13 @@ export default function MyNexusLandingPage() {
                     </ul>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+    
 
       {/* Features Section */}
       <section id="features" className="py-16">
@@ -414,27 +443,29 @@ export default function MyNexusLandingPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
-              <div 
+              <motion.div
                 key={index}
-                className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 100 + 300}ms` }}
-              >
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: false, amount: 0.2 }}
+                >
                 <Card className="h-full border-gray-200 text-center transition-all hover:shadow-lg">
-                  <CardHeader>
+                  <div className="text-center p-6">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                      <feature.icon className="h-6 w-6 text-blue-600" />
+                      <feature.icon className="h-6 w-6 text-nexusblue" />
                     </div>
                     <Typography variant="h6" component="h3" className="text-lg font-bold text-gray-900">
                       {feature.title}
                     </Typography>
-                  </CardHeader>
+                  </div>
                   <CardContent>
                     <Typography variant="body2" color="textSecondary" className="leading-relaxed text-gray-600">
                       {feature.description}
                     </Typography >
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -455,7 +486,7 @@ export default function MyNexusLandingPage() {
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                    <Zap className="h-4 w-4 text-blue-600" />
+                    <Zap className="h-4 w-4 text-nexusblue" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">Increase Operational Efficiency</h3>
@@ -513,29 +544,32 @@ export default function MyNexusLandingPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <div 
+              <motion.div
                 key={index}
-                className="relative text-center"
-              >
-                <div className="absolute left-1/2 top-0 -ml-6 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: index * 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
+                >
+                <div className="absolute left-1/2 top-0 -ml-6 flex h-12 w-12 items-center justify-center rounded-full bg-nexusblue text-white">
                   {index + 1}
                 </div>
                 <Card className="pt-8 border-0 shadow-md">
-                  <CardHeader>
+                  <div className="text-center p-6">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                      <step.icon className="h-6 w-6 text-blue-600" />
+                      <step.icon className="h-6 w-6 text-nexusblue" />
                     </div>
                     <Typography variant="h6" component="h3" className="text-xl font-bold text-gray-900">
                       {step.title}
                     </Typography>
-                  </CardHeader>
+                  </div>
                   <CardContent>
                     <Typography variant="body2" color="textSecondary" className="text-gray-600">
                       {step.description}
                     </Typography >
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -555,11 +589,13 @@ export default function MyNexusLandingPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 200 + 600}ms` }}
-              >
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.30 }}
+                viewport={{ once: false, amount: 0.2 }}
+                >
                 <Card className="h-full border-gray-200">
                   <CardContent className="p-6">
                     <div className="mb-4 flex">
@@ -583,14 +619,14 @@ export default function MyNexusLandingPage() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
+      <section className="py-16 bg-nexusblue">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="mb-4 text-3xl font-black text-white sm:text-4xl">
@@ -601,20 +637,20 @@ export default function MyNexusLandingPage() {
             </p>
 
             <div className="mx-auto flex max-w-md flex-col items-center justify-center gap-4 sm:flex-row">
-              <TextField
+              {/* <TextField
                 type="email"
                 placeholder="Enter your work email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 border-gray-300 bg-white"
-              />
+              /> */}
               <Button 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="bg-white px-6 text-blue-600 hover:bg-gray-100"
+                className="bg-gray-100 px-6 text-white hover:bg-gray-100"
               >
-                {isSubmitting ? "Processing..." : "Join Waitlist"}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {isSubmitting ? "Processing..." : "Coming Soon"}
+                {/* <ArrowRight className="ml-2 h-4 w-4" /> */}
               </Button>
             </div>
             
@@ -634,137 +670,63 @@ export default function MyNexusLandingPage() {
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             {/* Company Info */}
-            <div className="col-span-1 md:col-span-2">
-              <h3 className="mb-4 text-2xl font-bold text-blue-600">
-                MyNexus
-              </h3>
+            {/* <div className="col-span-1 md:col-span-2">
+              <img 
+                src={require("../../assets/images/nexus_logo.png")} 
+                alt="MyNexus Logo" 
+                className="h-20 w-auto"
+                />
               <p className="mb-4 max-w-md text-gray-600">
                 The modern educational ERP solution that connects institutions, teachers, students, and parents in one seamless platform.
               </p>
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="text-gray-400 transition-colors hover:text-blue-600"
+                  className="text-gray-400 transition-colors hover:text-nexusblue"
                 >
                   <MessageSquare className="h-5 w-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 transition-colors hover:text-blue-600"
+                  className="text-gray-400 transition-colors hover:text-nexusblue"
                 >
                   <Phone className="h-5 w-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 transition-colors hover:text-blue-600"
+                  className="text-gray-400 transition-colors hover:text-nexusblue"
                 >
                   <Mail className="h-5 w-5" />
                 </a>
               </div>
-            </div>
+            </div> */}
 
-            {/* Product Links */}
-            <div>
-              <h4 className="mb-4 font-semibold text-gray-900">Product</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#features"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#modules"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Modules
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#pricing"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    API
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company Links */}
-            <div>
-              <h4 className="mb-4 font-semibold text-gray-900">Company</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    className="text-gray-600 transition-colors hover:text-blue-600"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
+           
           </div>
 
           <div className="mt-12 flex flex-col items-center justify-between border-t border-gray-200 pt-8 sm:flex-row">
             <p className="text-sm text-gray-600">
-              © 2025 MyNexus ERP. All rights reserved.
+              © 2025 MyNexus. All rights reserved | Designed & Developed by Botscoder.
             </p>
             <div className="mt-4 flex space-x-6 sm:mt-0">
               <a
                 href="#"
-                className="text-sm text-gray-600 transition-colors hover:text-blue-600"
+                className="text-sm text-gray-600 transition-colors hover:text-nexusblue"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-sm text-gray-600 transition-colors hover:text-blue-600"
+                className="text-sm text-gray-600 transition-colors hover:text-nexusblue"
               >
-                Terms of Service
+                Terms & Condition
               </a>
-              <a
+              {/* <a
                 href="#"
-                className="text-sm text-gray-600 transition-colors hover:text-blue-600"
+                className="text-sm text-gray-600 transition-colors hover:text-nexusblue"
               >
                 Cookie Policy
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
