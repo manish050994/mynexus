@@ -245,14 +245,7 @@ export default function MyNexusLandingPage() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden md:block">
-                <Button 
-                    variant="contained" 
-                    color="primary"
-                >
-                    Request Demo
-                </Button>
-            </div>
+            
 
             {/* Mobile menu button */}
             <div className="md:hidden">
