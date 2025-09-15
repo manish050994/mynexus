@@ -7,7 +7,13 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
-import { motion } from "framer-motion";
+import { motion,AnimatePresence  } from "framer-motion";
+import Img1 from "../../assets/images/IMG_4816.png";
+import Img2 from "../../assets/images/IMG_4817.PNG";
+import Img3 from "../../assets/images/IMG_4818.PNG";
+import Img4 from "../../assets/images/IMG_4819.PNG";
+import Img5 from "../../assets/images/IMG_4820.PNG";
+import Img6 from "../../assets/images/IMG_4821.PNG";
 
 import {
   ArrowRight,
@@ -38,14 +44,49 @@ import {
   TrendingUp,
   Smartphone,
 } from "lucide-react";
+import { i } from "framer-motion/client";
 
+const testimonialsSlide = [
+  {
+    image: Img1,
+  
+  },
+  {
+    image: Img2,
+
+  },
+  {
+    image: Img3,
+
+  },
+  {
+    image: Img4,
+  
+  },
+  {
+    image: Img5,
+   
+  },
+  {
+    image: Img6,
+
+  },
+];
 export default function MyNexusLandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Auto slide every 3s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -200,13 +241,14 @@ export default function MyNexusLandingPage() {
   return (
     <main className="min-h-screen bg-white overflow-hidden">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <header className="top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <img 
+                style={{height: '90px'}}
                 src={require("../../assets/images/nexus_logo.png")} 
                 alt="MyNexus Logo" 
                 className="h-16 w-auto"
@@ -235,12 +277,12 @@ export default function MyNexusLandingPage() {
                 >
                   Testimonials
                 </a>
-                <a
+                {/* <a
                   href="#contact"
                   className="text-gray-700 transition-colors hover:text-nexusblue"
                 >
                   Contact
-                </a>
+                </a> */}
               </div>
             </nav>
 
@@ -616,6 +658,62 @@ export default function MyNexusLandingPage() {
             ))}
           </div>
         </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  {/* ✅ Slider Container */}
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+    {/* ✅ Show 6 slides in one row */}
+    <div className="relative w-full overflow-hidden">
+      <motion.div
+        className="flex"
+        animate={{ x: `-${currentIndex * (100 / 6)}%` }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        style={{
+          width: `${(testimonialsSlide.length / 6) * 100}%`,
+        }}
+      >
+        {testimonialsSlide.map((testimonial, index) => (
+      <motion.div
+  key={index}
+  className="w-1/4 flex-shrink-0 px-3"
+>
+  <Card className="h-full border-gray-200 shadow-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+    <CardContent className="p-0">
+      <motion.img
+        src={testimonial.image}
+        alt={testimonial.name}
+        className="h-72 w-full object-cover rounded-xl"
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.4 }}
+      />
+    </CardContent>
+  </Card>
+</motion.div>
+
+        ))}
+      </motion.div>
+
+      {/* ✅ Optional Arrows */}
+      <button
+        onClick={() =>
+          setCurrentIndex(
+            (prev) => (prev - 1 + testimonialsSlide.length) % testimonialsSlide.length
+          )
+        }
+        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() =>
+          setCurrentIndex((prev) => (prev + 1) % testimonialsSlide.length)
+        }
+        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+</div>
       </section>
 
       {/* CTA Section */}
@@ -637,14 +735,49 @@ export default function MyNexusLandingPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 border-gray-300 bg-white"
               /> */}
-              <Button 
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="bg-gray-100 px-6 text-white hover:bg-gray-100"
-              >
-                {isSubmitting ? "Processing..." : "Coming Soon"}
-                {/* <ArrowRight className="ml-2 h-4 w-4" /> */}
-              </Button>
+             <Button
+  onClick={handleSubmit}
+  disabled={isSubmitting}
+  className={`relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-2xl 
+    transition-all duration-300 ease-in-out
+    ${isSubmitting 
+      ? "bg-gray-200 text-gray-500 cursor-not-allowed" 
+      : "bg-white text-gray-900 shadow-md hover:shadow-xl hover:scale-105"
+    }`}
+>
+  {isSubmitting ? (
+    <span className="flex items-center gap-2"  style={{color:"white"}}>
+      <svg
+        className="w-5 h-5 animate-spin text-gray-600"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        ></path>
+      </svg>
+      Processing...
+    </span>
+  ) : (
+    <span className="flex items-center gap-2" style={{color:"white"}}>
+      Coming Soon
+      {/* Optional Arrow */}
+      {/* <ArrowRight className="ml-1 h-5 w-5 text-gray-700" /> */}
+    </span>
+  )}
+</Button>
+
             </div>
             
             {submitMessage && (
@@ -697,7 +830,7 @@ export default function MyNexusLandingPage() {
            
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between border-t border-gray-200 pt-8 sm:flex-row">
+          <div className=" flex flex-col items-center justify-between border-t border-gray-200 pt-8 sm:flex-row">
             <p className="text-sm text-gray-600">
               © 2025 MyNexus. All rights reserved | Designed & Developed by Botscoder.
             </p>
