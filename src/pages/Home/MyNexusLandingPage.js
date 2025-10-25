@@ -7,7 +7,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
-import { motion,AnimatePresence  } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Img1 from "../../assets/images/IMG_4816.png";
 import Img2 from "../../assets/images/IMG_4817.PNG";
 import Img3 from "../../assets/images/IMG_4818.PNG";
@@ -49,7 +49,7 @@ import { i } from "framer-motion/client";
 const testimonialsSlide = [
   {
     image: Img1,
-  
+
   },
   {
     image: Img2,
@@ -61,11 +61,11 @@ const testimonialsSlide = [
   },
   {
     image: Img4,
-  
+
   },
   {
     image: Img5,
-   
+
   },
   {
     image: Img6,
@@ -79,7 +79,23 @@ export default function MyNexusLandingPage() {
   const [submitMessage, setSubmitMessage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitss = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", mobile: "", message: "" });
+  };
   // Auto slide every 3s
   useEffect(() => {
     const interval = setInterval(() => {
@@ -94,7 +110,7 @@ export default function MyNexusLandingPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -247,11 +263,11 @@ export default function MyNexusLandingPage() {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img 
-                style={{height: '90px'}}
-                src={require("../../assets/images/nexus_logo.png")} 
-                alt="MyNexus Logo" 
-                className="h-16 w-auto"
+                <img
+                  style={{ height: '90px' }}
+                  src={require("../../assets/images/nexus_logo.png")}
+                  alt="MyNexus Logo"
+                  className="h-16 w-auto"
                 />
               </div>
             </div>
@@ -287,7 +303,7 @@ export default function MyNexusLandingPage() {
             </nav>
 
             {/* CTA Button */}
-            
+
 
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -357,14 +373,14 @@ export default function MyNexusLandingPage() {
               <span className="font-semibold">Coming Soon: MyNexus Mobile App</span>
             </div>
             <motion.div
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+              initial={{ opacity: 0, y: -40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
             >
-            <h1 className="mb-6 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-              Revolutionizing Education Management with{" "}
-              <span className="text-yellow-300">MyNexus</span>
-            </h1>
+              <h1 className="mb-6 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+                Revolutionizing Education Management with{" "}
+                <span className="text-yellow-300">MyNexus</span>
+              </h1>
             </motion.div>
             <p className="mx-auto mb-8 max-w-2xl text-xl leading-relaxed text-blue-100">
               The all-in-one ERP solution for schools and colleges. Streamline operations, enhance communication, and transform educational experiences.
@@ -374,28 +390,28 @@ export default function MyNexusLandingPage() {
               <Button
                 variant="outlined"
                 sx={{
-                    color: "#f5f5f5",
-                    border: "2px solid #f5f5f5",
-                    borderRadius: "12px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    transition: "all 0.3s ease-in-out",
-                    animation: "wiggle 0.5s infinite  ease-in-out",
-                    "&:hover": {
+                  color: "#f5f5f5",
+                  border: "2px solid #f5f5f5",
+                  borderRadius: "12px",
+                  fontWeight: 600,
+                  textTransform: "none",
+                  transition: "all 0.3s ease-in-out",
+                  animation: "wiggle 0.5s infinite  ease-in-out",
+                  "&:hover": {
                     border: "2px solid #f2f2f2ff",
                     // apply wiggle animation
-                    },
-                    "@keyframes wiggle": {
+                  },
+                  "@keyframes wiggle": {
                     "0%": { transform: "rotate(0deg)" },
                     "25%": { transform: "rotate(3deg)" },
                     "50%": { transform: "rotate(-3deg)" },
                     "75%": { transform: "rotate(3deg)" },
                     "100%": { transform: "rotate(0deg)" },
-                    },
+                  },
                 }}
-                >
+              >
                 Get Started
-                </Button>
+              </Button>
 
             </div>
           </div>
@@ -404,16 +420,16 @@ export default function MyNexusLandingPage() {
           <div className="mt-16 flex justify-center">
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-white/20 backdrop-blur"></div>
-              <img 
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ccde56c4-00b0-42a9-a5c5-bbfb82fbaa5a.png" 
-                alt="MyNexus mobile app dashboard showing student information, attendance, and grades on a modern smartphone interface" 
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ccde56c4-00b0-42a9-a5c5-bbfb82fbaa5a.png"
+                alt="MyNexus mobile app dashboard showing student information, attendance, and grades on a modern smartphone interface"
                 className="relative mx-auto w-full max-w-sm rounded-2xl shadow-2xl"
               />
             </div>
           </div>
         </div>
       </section>
-            
+
 
       {/* Modules Section */}
       <section id="modules" className="py-16 bg-gray-50">
@@ -429,13 +445,13 @@ export default function MyNexusLandingPage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             {modules.map((module, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: index * 0.3 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    >
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.3 }}
+                viewport={{ once: false, amount: 0.2 }}
+              >
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="text-center p-6">
                     <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${module.color}`}>
@@ -462,7 +478,7 @@ export default function MyNexusLandingPage() {
         </div>
       </section>
 
-    
+
 
       {/* Features Section */}
       <section id="features" className="py-16">
@@ -484,7 +500,7 @@ export default function MyNexusLandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: false, amount: 0.2 }}
-                >
+              >
                 <Card className="h-full border-gray-200 text-center transition-all hover:shadow-lg">
                   <div className="text-center p-6">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
@@ -517,7 +533,7 @@ export default function MyNexusLandingPage() {
               <p className="mb-8 text-lg text-gray-600">
                 Our specialized ERP solution delivers tangible benefits that transform how educational institutions operate.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
@@ -528,7 +544,7 @@ export default function MyNexusLandingPage() {
                     <p className="text-gray-600">Automate administrative tasks to save time and reduce errors.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-green-100">
                     <TrendingUp className="h-4 w-4 text-green-600" />
@@ -538,7 +554,7 @@ export default function MyNexusLandingPage() {
                     <p className="text-gray-600">Keep parents informed and involved in their child's education journey.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-purple-100">
                     <Shield className="h-4 w-4 text-purple-600" />
@@ -550,13 +566,13 @@ export default function MyNexusLandingPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-center">
               <div className="relative">
                 <div className="absolute -inset-4 rounded-3xl bg-white/50 backdrop-blur"></div>
-                <img 
-                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/aea976f6-3af5-446c-bedc-82005067631a.png" 
-                  alt="Teacher and students using tablets with the MyNexus app in a modern classroom environment" 
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/aea976f6-3af5-446c-bedc-82005067631a.png"
+                  alt="Teacher and students using tablets with the MyNexus app in a modern classroom environment"
                   className="relative rounded-2xl shadow-xl"
                 />
               </div>
@@ -585,7 +601,7 @@ export default function MyNexusLandingPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: index * 0.2 }}
                 viewport={{ once: false, amount: 0.2 }}
-                >
+              >
                 <div className="absolute left-1/2 top-0 -ml-6 flex h-12 w-12 items-center justify-center rounded-full bg-nexusblue text-white">
                   {index + 1}
                 </div>
@@ -630,7 +646,7 @@ export default function MyNexusLandingPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.2, delay: index * 0.30 }}
                 viewport={{ once: false, amount: 0.2 }}
-                >
+              >
                 <Card className="h-full border-gray-200">
                   <CardContent className="p-6">
                     <div className="mb-4 flex">
@@ -658,20 +674,20 @@ export default function MyNexusLandingPage() {
             ))}
           </div>
         </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-  {/* ✅ Slider Container */}
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-    {/* ✅ Show 6 slides in one row */}
-    <div className="relative w-full overflow-hidden">
-      <motion.div
-        className="flex"
-        animate={{ x: `-${currentIndex * (100 / 6)}%` }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        style={{
-          width: `${(testimonialsSlide.length / 6) * 100}%`,
-        }}
-      >
-        {testimonialsSlide.map((testimonial, index) => (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* ✅ Slider Container */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            {/* ✅ Show 6 slides in one row */}
+            <div className="relative w-full overflow-hidden">
+              <motion.div
+                className="flex"
+                animate={{ x: `-${currentIndex * (100 / 6)}%` }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                style={{
+                  width: `${(testimonialsSlide.length / 6) * 100}%`,
+                }}
+              >
+                {/* {testimonialsSlide.map((testimonial, index) => (
       <motion.div
   key={index}
   className="w-1/4 flex-shrink-0 px-3"
@@ -689,33 +705,133 @@ export default function MyNexusLandingPage() {
   </Card>
 </motion.div>
 
-        ))}
-      </motion.div>
+        ))} */}
+                {testimonialsSlide.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    className="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-3 mb-4"
+                  >
+                    <Card className="h-full border-gray-200 shadow-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+                      <CardContent className="p-0">
+                        <motion.img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="h-72 w-full object-cover rounded-xl"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.4 }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
 
-      {/* ✅ Optional Arrows */}
-      <button
-        onClick={() =>
-          setCurrentIndex(
-            (prev) => (prev - 1 + testimonialsSlide.length) % testimonialsSlide.length
-          )
-        }
-        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
-      >
-        ‹
-      </button>
-      <button
-        onClick={() =>
-          setCurrentIndex((prev) => (prev + 1) % testimonialsSlide.length)
-        }
-        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
-      >
-        ›
-      </button>
-    </div>
-  </div>
-</div>
+              </motion.div>
+
+              {/* ✅ Optional Arrows */}
+              <button
+                onClick={() =>
+                  setCurrentIndex(
+                    (prev) => (prev - 1 + testimonialsSlide.length) % testimonialsSlide.length
+                  )
+                }
+                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
+              >
+                ‹
+              </button>
+              <button
+                onClick={() =>
+                  setCurrentIndex((prev) => (prev + 1) % testimonialsSlide.length)
+                }
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-gray-800/60 p-2 text-white hover:bg-gray-800"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
+      <section className="py-16">
+        <div className="flex justify-center items-center py-10 px-4 bg-gray-50">
+          <form
+            onSubmit={handleSubmitss}
+            className="w-full max-w-lg bg-white shadow-lg rounded-2xl p-8 space-y-6"
+          >
+            <h2 className="text-2xl font-semibold text-center text-gray-800">
+              Contact Us <br />
 
+            </h2>
+              <span className="text-sm text-gray-500">
+              E-Mail:- support@mynexus.co.in<br />
+              Phone Number:- +91 6394051689<br/>
+            </span>
+            <span className="text-sm text-gray-500">Have questions or need more information? Fill out the form below to get in touch with our team.</span>
+          
+            {/* Name */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium">Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Mobile Number */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium">Mobile Number</label>
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="Enter your mobile number"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium">Message</label>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Enter your message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-all duration-300"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
       {/* CTA Section */}
       <section className="py-16 bg-nexusblue">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -735,55 +851,55 @@ export default function MyNexusLandingPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 border-gray-300 bg-white"
               /> */}
-             <Button
-  onClick={handleSubmit}
-  disabled={isSubmitting}
-  className={`relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-2xl 
+              <Button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className={`relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold rounded-2xl 
     transition-all duration-300 ease-in-out
-    ${isSubmitting 
-      ? "bg-gray-200 text-gray-500 cursor-not-allowed" 
-      : "bg-white text-gray-900 shadow-md hover:shadow-xl hover:scale-105"
-    }`}
->
-  {isSubmitting ? (
-    <span className="flex items-center gap-2"  style={{color:"white"}}>
-      <svg
-        className="w-5 h-5 animate-spin text-gray-600"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          className="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        ></circle>
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-        ></path>
-      </svg>
-      Processing...
-    </span>
-  ) : (
-    <span className="flex items-center gap-2" style={{color:"white"}}>
-      Coming Soon
-      {/* Optional Arrow */}
-      {/* <ArrowRight className="ml-1 h-5 w-5 text-gray-700" /> */}
-    </span>
-  )}
-</Button>
+    ${isSubmitting
+                    ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                    : "bg-white text-gray-900 shadow-md hover:shadow-xl hover:scale-105"
+                  }`}
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2" style={{ color: "white" }}>
+                    <svg
+                      className="w-5 h-5 animate-spin text-gray-600"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2" style={{ color: "white" }}>
+                    Coming Soon
+                    {/* Optional Arrow */}
+                    {/* <ArrowRight className="ml-1 h-5 w-5 text-gray-700" /> */}
+                  </span>
+                )}
+              </Button>
 
             </div>
-            
+
             {submitMessage && (
               <p className="mt-4 text-sm text-green-300">{submitMessage}</p>
             )}
-            
+
             <p className="mt-4 text-sm text-blue-200">
               Be the first to know when we launch • Exclusive early access • No credit card required
             </p>
@@ -827,7 +943,7 @@ export default function MyNexusLandingPage() {
               </div>
             </div> */}
 
-           
+
           </div>
 
           <div className=" flex flex-col items-center justify-between border-t border-gray-200 pt-8 sm:flex-row">
